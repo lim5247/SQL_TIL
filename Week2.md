@@ -53,12 +53,41 @@
 
 **SQL 쿼리 구조**  
 - SELECT: 테이블의 어떤 컬럼을 선택(출력)할 것인가
-  ex) Col1 AS new_name,
-      Col2,
+  ex) Col1 AS new_name,  
+      Col2,  
       Col3
 - FROM (데이터셋).(테이블): 어떤 테이블에서 데이터를 확인할 것인가
 - WHERE: 만약 원하느 조건이 있다면 선택할 수 있음 ex) Col1 = 1: name = "꼬부기"
 
+~~~
+예시)  
+SELECT
+  * (모든 컬럼을 출력하겠다, SELECT * EXCEPT도 가능)
+FROM basic.pokemon
+WHERE
+  type1 = 'Fire'
+~~~
+
+**데이터가 여러 장소에 저장되어 있는 경우**  
+특정 테이블 데이터 각각 추출 후 연결하기, JOIN  
+TIP) 집합으로 그려놓고 시작하기
+
+**빅커리에 실습해보기**  
+프로젝트를 여러 개 사용한다면 프로젝트명을 명시하는 것이 좋음 
+프로젝트명을 제외하고 작성할 때는 파일명에 '' 없어도 괜찮음  
+세미콜론으로 쿼리문을 끊을 수 있음
+SQL은 FROM, WHERE, SELECT 순서대로 인지하면 좋음
+
+~~~
+SELECT
+  id AS pokemon_id, #AS는 별칭을 지어줄 때 / 따옴표 사용X
+  kor_name, 
+  type1,
+  total
+FROM basic.pokemon
+WHERE
+ type1 = "Fire"
+~~~
 
 ## 2-5. 집계 (Group By / HAVING / SUM,COUNT)
 
