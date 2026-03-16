@@ -97,10 +97,48 @@ WHERE
 * GROUP BY, HAVING, ORDER BY, 집계함수(SUM/COUNT 등)을 활용하는 방법을 설명할 수 있다.
 * having과 where의 차이에 대해서 설명할 수 있다.
 ~~~
+**[요약하기]**  
+**집계**: 그룹화해서 계산(+, -, max, min, 평균, 갯수)하기 ex) COUNT, COUNTIF, MAX, MIN, AVG, SUM
+**GROUP BY**: 같은 값끼리 모아서 그룹화, 특정 칼럼을 기준으로 모으면서 다른 컬럼에서 집계 가능
+- HAVING: 집계 후 조건 처리
+집계할 컬럼을 SELECT에 명시하고 그 컬럼을 GROUP BY에 작성
+**DISTINCT**: 고유값을 알고 싶은 경우, 중복 제거 ex) COUNT(DISTINCT 컬럼)
+  GROUP BY도 비슷한 상황에서 사용할 수 있음
+~~~
+SELECT
+  type1.AVG(attack) As avg_attack,
+  count(id) AS cnt
+FROM pokemon
+GROUP BY
+  type1
+HAVING
+  cnt > 3
+~~~
+**그룹화 활용 포인트**
+- 일자별 집계
+- 연령대별 집계
+- 특정 타입별 집계
+- 앱 화면별 집계  
+등등
 
+**조건을 설정하고 싶은 경우**
+- WHERE: 테이블에 바로 조건을 설정하고 싶은 경우
+- HAVING: GROUP BY한 후 조건을 설정하고 싶은 경우
+  <br>
+* HAVING대신 WHERE을 쓰고 싶을 때:  
+  FROM절 아래에 서브 쿼리를 넣을 수 있음, 더 길어짐
 
+**서브쿼리**  
+- SELECT문 안에 존재하는 SELECT쿼리  
+- FROM절에 넣을 수 있음
+- 괄호로 묶어서 사용
+- 서브쿼리를 작성하고 서브쿼리 바깥에서 WHERE 조건 설정 = 서브쿼리에서 HAVING으로 하는 것
 
+**ORDER BY [컬럼] [순서]**: 정렬, 쿼리의 맨 마지막에 작성
+ex) DESC(내림차순), OSC(오름차순, 보통 디폴트 값)
 
+**LIMIT**: 출력 개수 제한하기, 결과 ROW 수 제한, 쿼리의 맨 마지막에 작성
+  
 # 2️⃣ 학습 인증란
 
 <!-- 이 글을 지우고, 여기에 학습한 것을 인증해주세요.-->
