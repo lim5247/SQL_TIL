@@ -141,7 +141,7 @@ ex) DESC(내림차순), OSC(오름차순, 보통 디폴트 값)
   
 # 2️⃣ 학습 인증란
 
-<!-- 이 글을 지우고, 여기에 학습한 것을 인증해주세요.-->
+![학습인증](./image2-1.jpg)
 
 
 
@@ -167,7 +167,14 @@ WHERE type = Electric;
 
 
 ~~~
-여기에 답을 작성해주세요!
+1. SELECT할 컬럼을 나열할 때 쉼표를 사용해야 함  
+2. WHERE문 전에 ;가 오면 쿼리문을 끊는 역할을 하기에 오류가 생긴다  
+3. Electric은 문자열이기에 따옴표를 넣어야 함
+~~~
+~~~sql
+SELECT name, type
+FROM pokemon
+WHERE type = 'Electric';
 ~~~
 
 
@@ -183,10 +190,14 @@ WHERE AVG(attack) >= 60
 GROUP BY type;
 ~~~
 
-
-
 ~~~
-여기에 답을 작성해주세요.
+평균값을 집계한 후 평균 공격력이 60이상인 타입만 추출해야한다. 이를 위해서는 WHERE문이 아니라 HAVING을 써야 한다.
+~~~
+~~~sql
+SELECT type, AVG(attack) AS avg_attack
+FROM pokemon
+GROUP BY type
+HAVING AVG(attack) >= 60;
 ~~~
 
 
