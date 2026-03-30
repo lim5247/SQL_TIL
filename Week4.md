@@ -160,8 +160,8 @@ SELECT
 
 
 * TIMESTAMP: 시간 도장, UTC부터 경과한 시간을 나타내는 값
- * TIMEZONE 정보 있음
- * 2023-12-31 14:00:00 UTC
+  * TIMEZONE 정보 있음
+  * 2023-12-31 14:00:00 UTC
 
 **작은 시간 단위**  
 - millisecond(ms)
