@@ -171,7 +171,21 @@ SELECT
 
 
 **시간함수**
+-Extract
+  - 2024-01-02 14:00:00 -> 특정 월이나 일을 추출하고자 할 때
+  - 요일 추출: DAYOFWEEK ->첫날이 일요일인 1~7까지의 값
 
+- DATETIME_TRUNC
+  - 2024-01-02 14:41:21 -> 2024-01-02 14:00:00
+
+- PARSE_DATETIME
+  - 문자열로 저장된 DATETIME을 DATETIME 타입으로 바꿀 때
+
+- FORMAT_DATETIME
+  - DATETIME 타입으로 저장된 DATETIME을 문자열 데이터로 바꿀 때
+
+- DATETIME_DIFF
+  - 두 DATETIME의 차이를 알고 싶은 경우
 
 <br>
 
@@ -193,7 +207,7 @@ SELECT
 
 <!-- 문제를 풀기 위하여 로그인이  필요합니다. -->
 
-<!-- 정답을 맞추게 되면, 정답입니다. 라는 칸이 생성되는데 이 부분을 캡처해서 이 주석을 지우시고 첨부해주시면 됩니다. --> 
+<img width="853" height="381" alt="image" src="https://github.com/user-attachments/assets/d1dc05c9-c1c7-4b30-82e1-87d08de701ea" />
 
 
 
