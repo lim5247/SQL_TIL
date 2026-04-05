@@ -58,8 +58,8 @@
 * CURRENT_TIME, EXTRACT, DATETIME_TRUNC, PARSE_DATETIME, FROMAT_DATETIME 을 설명할 수 있다. 
 ~~~
 
-<!-- 새롭게 배운 내용을 자유롭게 정리해주세요.-->
-
+CURRENT_DATE([time_zone]) AS ...: 
+CURRENT_DATETIME([time_zone]) AS ...: 
 
 
 # 4-6. 조건문(CASE WHEN, IF)
