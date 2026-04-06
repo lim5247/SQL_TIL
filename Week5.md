@@ -58,8 +58,16 @@
 * CURRENT_TIME, EXTRACT, DATETIME_TRUNC, PARSE_DATETIME, FROMAT_DATETIME 을 설명할 수 있다. 
 ~~~
 
-CURRENT_DATE([time_zone]) AS ...: 
-CURRENT_DATETIME([time_zone]) AS ...: 
+- CURRENT_DATE([time_zone]) AS ...: 현재 날짜
+- CURRENT_DATETIME([time_zone]) AS ...: 현재 날짜 + 시간
+- EXTRACT({part} FROM datetime_expression) AS ...: DATETIME에서 일부만 추출하고 싶을 때
+  - {part}: DATE, TEAR, MONTH, DAY, HOUR, MINUTE, DAYOFWEEK 등 시간표현
+- DATETIME_TRUNC(A, B): A에서 B 뒤에 부분을 자름 -> 기본 꼴로 정리
+- PARSE_DATETIME('문자열의 형태', 'DATETIME문자열') AS datetime: 문자열DTETIME을 DATETIME 타입으로 바꾸기
+  - ex) 문자열의 형태: '%y-%m-%d'
+- FORMAT_DATETIME('%C', DATETIME"2024-01-11 12:35:35") AS formatted: DATETIME타입 데이터를 특정 형태의 문자열 데이터로 변환
+- LAST_DAY(DATETIME): 월의 마지막 값을 반환, 인자를 주면 월이 아니라 기준값의 마지막날을 줌
+- DATETIME_DIFF(첫 DATETIME, 두번째 DATETIME, 궁금한 차이) : 두 DATETIME의 차이를 알고 싶은 경우
 
 
 # 4-6. 조건문(CASE WHEN, IF)
@@ -69,7 +77,27 @@ CURRENT_DATETIME([time_zone]) AS ...:
 * 조건문 함수의 기능을 이해하고, 설명할 수 있다. 
 ~~~
 
-<!-- 새롭게 배운 내용을 자유롭게 정리해주세요.-->
+- 조건문: 조건이 충족되면 특정 동작 수행 / 조건에 따라 다른 값을 표시하고 싶을 때 사용
+  - CASE WHEN / IF 문
+- 사용하는 경우 ex) 특정 카테고리를 하나로 합치는 전처리
+
+**CASE WHEN** 여러 조건이 있을 경우 유용  
+~~~sql
+SELECT
+ CASE
+  WHEN 조건1 THEN 조건1이 참일 때 결과
+  WHEN 조건2 THEN 조건2가 참일 때 결과
+  ELSE 그 외 조건일 경우 결과
+ END AS 새로운_컬럼_이름
+FROM
+~~~
+* 조건 순서 주의!!!
+
+**IF** 단일 조건일 떄 유용
+~~~sql
+IF(조건문, TRUE일 때의 값, FALSE일 때의 값) AS 새로운_컬럼_이름
+~~~
+
 
 
 
