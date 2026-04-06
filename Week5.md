@@ -213,7 +213,12 @@ FROM Basic.trainer;
 <!-- 틀린쿼리에 대한 오류의 원인도 같이 작성해주세요. 문제에서 제공된 order_time 컬럼은 DATETIME type의 데이터를 가지고 있다고 가정합니다. -->
 
 ~~~
-2. 
+정답: 2, 3, 4번
+2. truncated_hour이 아니라 order_time으로 GRUOP BY를 하고 있다.
+
+3. FORMAT_DATE함수의 인자 위치를 바꾸어야 한다. FORMAT_DATETIME('%H', order_time)
+
+4. 문법 오류, CASE문에 END가 없다.
 ~~~
 
 
@@ -244,7 +249,7 @@ FROM pokemon;
 <!-- 근거와 함께 답을 작성해주세요 -->
 
 ~~~
-여기에 답을 작성해주세요!
+Pikachu, Bulbasaur는 Fire과 Water에 해당하지 않기에 ELSE에 해당되어 Normal로 나타난다.
 ~~~
 
 
