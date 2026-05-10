@@ -127,7 +127,7 @@ ON tp.pokemon_id = p.id #ON에서 별칭 사용 가능
 * 연습문제(3문제 이상) 푼 것들 정리하기
 ~~~
 
-# 1. 트레이너가 보유한 포켓몬들은 얼마나 있는지 알 수 있는 쿼리 작성
+**1. 트레이너가 보유한 포켓몬들은 얼마나 있는지 알 수 있는 쿼리 작성**
 ~~~sql
 SELECT
   kor_name,
@@ -152,33 +152,52 @@ ORDER BY
 * 필터링을 먼저 해서 row 수를 줄이고 JOIN하기
 * JOIN에서 사영하는 테이브렝 중복된 컬럼 이름이 있다면 어떤 테이블의 컬럼인지 명시하기
 
-# 2. 각 트레이너가 보유한 포켓몬 중에서 'GRASS' 타입의 포켓몬 수를 계산해주세요.
+**2. 각 트레이너가 보유한 포켓몬 중에서 'GRASS' 타입의 포켓몬 수를 계산해주세요.**
 ~~~sql
 SELECT
-  tp.*,
-  p.type1
-  COUNT(tp.id) AS pokemon_Cnt
+  p.type1,
+  COUNT(tp.id) AS CNT
 FROM (
-  SELECT
+  SELECT 
     id,
     trainer_id,
     pokemon_id,
     status
   FROM basic.trainer_pokemon
-  WHERE
+  WHERE 
     status IN ("Active","Training")
 ) AS tp
 LEFT JOIN basic.pokemon AS p
-ON tp.pokemon_id=p.id
-WHERE
-  type1="Grass"
-GROUP BY
-  type1
-ORDER BY
-  2 DESC
+ON tp.pokemon_id = p.id
+WHERE type1 = "Grass"
+GROUP BY type1
+ORDER BY 2 DESC
 ~~~
 * 기준이 되는 테이블을 무엇으로 잡을까 -> NULL 안 추가되는 방안으로, 내가 구하고자 하는 데이터가 어디에 잘 저장되어 있는가?
 
+**4. MASTER 등급인 트레이너들은 어떤 타입의 포켓몬을 제일 많이 보유하고 있을까**
+~~~sql
+SELECT 
+  type1, 
+  COUNT(tp.id) AS cnt
+FROM (
+SELECT
+  id,
+  trainer_id,
+  pokemon_id,
+  status
+FROM basic.trainer_pokemon
+WHERE 
+  status IN ("Active","Traning")
+) AS tp
+LEFT JOIN  basic.pokemon AS p
+ON tp.pokemon_id = p.id
+LEFT JOIN basic.trainer AS t
+ON tp.trainer_id = t.id
+WHERE t.achievement_level = "Master"
+GROUP BY type1
+ORDER BY 2 DESC
+~~~
 <br>
 
 <br>
@@ -197,7 +216,8 @@ https://school.programmers.co.kr/learn/courses/30/lessons/133027
 
 > 주문량이 많은 아이스크림들 조회하기
 
-<!-- 정답을 맞추게 되면, 정답입니다. 이 부분을 캡처해서 이 주석을 지우시고 첨부해주시면 됩니다. --> 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c73ca355-d7d6-4969-acf3-1c34a717de13" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e0d04c3e-112f-43dd-86a2-16a4fde657ec" />
 
 
 
